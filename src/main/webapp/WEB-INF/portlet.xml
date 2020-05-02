@@ -1,0 +1,6 @@
+<?xml version="1.0" ?>
+<portlet-class>org.springframework.web.portlet.DispatcherPortlet</portlet-class>
+<init-param>
+	<name>contextConfigLocation</name>
+	<value>/WEB-INF/spring-portlet.xml</value>
+</init-param>
