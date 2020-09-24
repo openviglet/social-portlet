@@ -1,26 +1,187 @@
-<?xml version="1.0"?>
-<web-app version="2.4" xmlns="http://java.sun.com/xml/ns/j2ee"
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="2.5" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+   <!--
+    For App Servers which do not support Servlet 2.5 specification (eg. Tomcat 5.5.x). Please follow the steps below
+    1. Remove the above lines ( web-app 2.5 declaration)
+    2. UnComment the below lines (web-app 2.4 declaration)
+	3. Remove the trim-directive-whitespaces parameter (see jsp-property-group element declared at the end of this file)
+    -->
+
+    <!--
+    <web-app id="WebApp_9" version="2.4"
+    xmlns="http://java.sun.com/xml/ns/j2ee"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
-
-<context-param>
-    <param-name>contextConfigLocation</param-name>
-    <param-value>/WEB-INF/spring-portlet.xml</param-value>
+   -->
+    <display-name>Viglet Social Portlets</display-name>
+        <description>
+                Viglet Social Portlets 0.3.0
+        </description>
+    <!--
+      - Key of the system property that should specify the root directory of this
+      - web app. Applied by WebAppRootListener or Log4jConfigListener.
+      -->
+   <!-- ADDED BY VIGNETTE PORTLET PACKAGING TOOL.  DO NOT EDIT --><context-param>
+<description>The context root to which this web application is deployed.  Used by the Portal JSR 168 implementation.</description>
+<param-name>contextPath</param-name>
+<param-value>viglet-social-portlets</param-value>
 </context-param>
+<!-- END THIS VIGNETTE PACKAGING TOOL ADDITION. -->
+<context-param>
+        <param-name>webAppRootKey</param-name>
+        <param-value>vca.root</param-value>
+    </context-param>
 
-<servlet>
-    <servlet-name>ViewRendererServlet</servlet-name>
-    <servlet-class>org.springframework.web.servlet.ViewRendererServlet</servlet-class>
-</servlet>
+    <!--
+         - Used by Spring's SingletonBeanFactoryLocator.  Combined with the
+         - locatorFactorySelector option below this causes Spring to create
+         - a SingletonBeanFactoryLocator and look for a bean factory with the
+         - name supplied in this option.  That factory will become the parent
+         - context for the web application context defined in the context parameter
+         - contextConfigLocation.
+         -->
+     <!--
+     - This parameter causes Spring to create a SingletonBeanFactoryLocator and
+     - look for a beanRefFactory.xml with defined bean factories.
+     -->
+    <context-param>
+        <param-name>parentContextKey</param-name>
+        <param-value>communityConfig</param-value>
+    </context-param>
 
-<servlet-mapping>
-    <servlet-name>ViewRendererServlet</servlet-name>
-    <url-pattern>/WEB-INF/servlet/view</url-pattern>
-</servlet-mapping>
+    <!--
+      - Location of the Log4J config file, for initialization and refresh checks.
+      - Applied by Log4jConfigListener.
+      -->
+     <context-param>
+         <param-name>log4jConfigName</param-name>
+         <param-value>vcalog4j.properties</param-value>
+     </context-param>
 
+    <context-param>
+        <param-name>locatorFactorySelector</param-name>
+        <param-value>classpath*:/com/vignette/community/applications/config/communityConfigBeanRefFactory.xml</param-value>
+    </context-param>
+
+    <!--
+     - Used by the ContextConfigLocator to create the WebApplicationContext.
+     - If a web application was also using spring and had its own web application
+     - context XML file it could be added to this this param value.  The
+     - contexts will be merged.
+     -->
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>/WEB-INF/context/applicationContext.xml</param-value>
+	</context-param>
+
+    <!-- ADDED BY VIGNETTE PORTLET PACKAGING TOOL.  DO NOT EDIT --><filter>
+<filter-name>PortletApplicationSecurityFilter</filter-name>
+<filter-class>com.vignette.portal.portlet.jsrcontainer.PortletApplicationSecurityFilter</filter-class>
+</filter>
+<!-- END THIS VIGNETTE PACKAGING TOOL ADDITION. -->
+<!-- ADDED BY VIGNETTE PORTLET PACKAGING TOOL.  DO NOT EDIT -->
+<filter-mapping>
+<filter-name>PortletApplicationSecurityFilter</filter-name>
+<url-pattern>/*</url-pattern>
+</filter-mapping>
+<!-- END THIS VIGNETTE PACKAGING TOOL ADDITION. -->
+<!-- ADDED BY VIGNETTE PORTLET PACKAGING TOOL.  DO NOT EDIT -->
 <listener>
-    <listener-class>
-        org.springframework.web.context.ContextLoaderListener
-    </listener-class>
+<listener-class>com.vignette.portal.portlet.jsrcontainer.PortletApplicationServletContextListener</listener-class>
 </listener>
+<!-- END THIS VIGNETTE PACKAGING TOOL ADDITION. -->
+<listener>
+        <listener-class>com.vignette.community.common.log4j.VgnLog4jConfigListener</listener-class>
+    </listener>
+
+    <listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
+
+    <listener>
+        <listener-class>com.vignette.community.applications.streaming.HttpSessionListener</listener-class>
+    </listener>
+
+    <!-- ADDED BY VIGNETTE PORTLET PACKAGING TOOL.  DO NOT EDIT --><servlet>
+<description>Utilized by Portal to invoke JSR 168 portlets</description>
+<display-name>Portlet Command Servlet</display-name>
+<servlet-name>PortletCommandServlet</servlet-name>
+<servlet-class>com.vignette.portal.portlet.jsrcontainer.PortletCommandServlet</servlet-class>
+</servlet>
+<!-- END THIS VIGNETTE PACKAGING TOOL ADDITION. -->
+<servlet>
+		<servlet-name>ViewRendererServlet</servlet-name>
+		<servlet-class>org.springframework.web.servlet.ViewRendererServlet</servlet-class>
+		<load-on-startup>3</load-on-startup>
+	</servlet>
+
+    <servlet>
+        <servlet-name>SAPI</servlet-name>
+        <servlet-class>com.vignette.community.api.ApiServlet</servlet-class>
+        <load-on-startup>4</load-on-startup>
+    </servlet>
+
+    <!-- ADDED BY VIGNETTE PORTLET PACKAGING TOOL.  DO NOT EDIT --><servlet-mapping>
+<servlet-name>PortletCommandServlet</servlet-name>
+<url-pattern>/portletCommand/*</url-pattern>
+</servlet-mapping>
+<!-- END THIS VIGNETTE PACKAGING TOOL ADDITION. -->
+<servlet-mapping>
+        <servlet-name>ViewRendererServlet</servlet-name>
+        <url-pattern>/WEB-INF/servlet/view</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>SAPI</servlet-name>
+        <url-pattern>/api</url-pattern>
+    </servlet-mapping>
+
+    <jsp-config>
+
+    <taglib>
+        <taglib-uri>http://www.springframework.org/tags</taglib-uri>
+        <taglib-location>/WEB-INF/tld/spring.tld</taglib-location>
+    </taglib>
+
+    <taglib>
+        <taglib-uri>http://java.sun.com/portlet_2_0</taglib-uri>
+        <taglib-location>/WEB-INF/tld/portlet20.tld</taglib-location>
+    </taglib>
+    <taglib>
+        <taglib-uri>http://www.springframework.org/tags/form</taglib-uri>
+        <taglib-location>/WEB-INF/tld/spring-form.tld</taglib-location>
+    </taglib>
+    <taglib>
+        <taglib-uri>http://www.vignette.com/jsp/tags/vgnc</taglib-uri>
+        <taglib-location>/WEB-INF/tld/vgnc.tld</taglib-location>
+    </taglib>
+    <taglib>
+        <taglib-uri>http://www.vignette.com/jsp/tags/vca</taglib-uri>
+        <taglib-location>/WEB-INF/tld/vca.tld</taglib-location>
+    </taglib>
+    <taglib>
+        <taglib-uri>http://www.vignette.com/jsp/tags/vgnc-spring</taglib-uri>
+        <taglib-location>/WEB-INF/tld/vgnc-spring.tld</taglib-location>
+    </taglib>
+    <taglib>
+        <taglib-uri>http://java.sun.com/jsp/jstl/core</taglib-uri>
+        <taglib-location>/WEB-INF/tld/c.tld</taglib-location>
+    </taglib>
+    
+     <!--
+      - Need to remove the below lines for appserver's which do not support servlet 2.5 specification
+      - For trimminng whitespaces introduced from jsp page import directives
+      - trim-directive-whitespaces option is avaliable with Servlet 2.5 spec
+      -->
+    <jsp-property-group>
+        <url-pattern>*.jsp</url-pattern>
+        <trim-directive-whitespaces>true</trim-directive-whitespaces>
+    </jsp-property-group>
+    <!-- trim whitespaces end -->   
+    </jsp-config>
+    <!-- Set the Content-Type header for swf files correctly, in weblogic and websphere -->
+    <mime-mapping>
+         <extension>swf</extension>
+         <mime-type>application/x-shockwave-flash</mime-type>
+    </mime-mapping>
 </web-app>

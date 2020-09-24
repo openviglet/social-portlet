@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "../dtd/spring-beans-2.0.dtd">
+
+<beans>
+    
+    <!-- Message source for this context, loaded from localized "messages_xx" files -->
+	<bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
+		<property name="basenames">
+			<list>
+				<value>com.vignette.community.applications.bundles.ApplicationsMessages</value>
+        <value>com.vignette.community.applications.video.bundles.ApplicationsMessages</value>
+        <value>com.vignette.community.applications.calendar.bundles.ApplicationsMessages</value>
+        <value>com.vignette.community.applications.file.bundles.ApplicationsMessages</value>
+        <value>com.vignette.community.applications.idea.bundles.ApplicationsMessages</value>
+        <value>com.vignette.community.applications.photo.bundles.ApplicationsMessages</value>
+        <value>com.vignette.community.applications.podcast.bundles.ApplicationsMessages</value>
+        <value>com.vignette.community.applications.presentation.bundles.ApplicationsMessages</value>
+        <value>com.vignette.community.applications.banner.bundles.ApplicationsMessages</value>
+        <value>com.vignette.community.applications.appcollection.bundles.ApplicationsMessages</value>
+        <value>com.vignette.community.services.bundles.ServicesMessages</value>                
+            </list>
+		</property>
+	</bean>
+
+    <!-- Default View Resolver -->
+	<bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>
+		<property name="prefix" value="/WEB-INF/jsp/"/>
+		<property name="suffix" value=".jsp"/>
+	</bean>
+
+	<!-- Abstract Default Exception Handler Bean -->
+    <bean id="defaultExceptionHandlerTemplate" class="com.vignette.community.spring.web.portlet.handler.SimpleMappingExceptionResolverVgn" abstract="true">
+		<property name="defaultErrorView" value="error/defaultError"/>
+		<property name="exceptionMappings">
+			<props>
+				<prop key="com.vignette.community.common.util.CommunityError">error/communityError</prop>
+			</props>
+		</property>
+	</bean>
+
+    <!-- Abstract bean for properties common (across Application Types)
+         to all the controllers used for each Portlet mode -->
+    <bean id="baseControllerTemplate" abstract="true">
+        <property name="communityObjectReferenceConfigMap">
+            <ref bean="CommunityObjectReferenceMap"/>
+        </property>
+        <property name="communityApplicationTypeConfigs">
+            <ref bean="AllAppTypeConfigs"/>
+        </property>
+        <property name="resourceCache">
+            <ref bean="resourceCache"/>
+        </property>
+        <property name="sitePrivilegedUser">
+            <ref bean="vcasiteprivilegeduser"/>
+        </property>
+        <property name="communitySystemsConfigs">
+            <ref bean="ugcMap"/>
+        </property>
+    </bean>    
+
+    <!-- Abstract bean for properties common (across Application Types)
+         to all the controllers used for the View Portlet mode -->
+    <bean id="baseViewControllerTemplate" abstract="true" parent="baseControllerTemplate">
+        <property name="synchronizeOnSession" value="true"/>
+        <property name="alertModeratorThreshold" value="3"/>
+        <property name="postLimits">
+            <ref bean="postLimitConfigs"/>
+        </property>
+        <property name="imageSizes">
+            <ref bean="imageSizeConfigs"/>
+        </property>
+        <property name="postContents">
+            <ref bean="postContentConfigs"/>
+        </property>
+    </bean>
+
+    <!-- Abstract bean for properties common (across Application Types)
+         to all the controllers used for the Config Portlet mode -->
+    <bean id="baseConfigControllerTemplate" abstract="true" parent="baseControllerTemplate">
+        <property name="commandName" value="configModel" />
+        <property name="commandClass" value="com.vignette.community.applications.controller.ConfigModel"/>
+        <property name="sessionForm" value="true"/>
+        <property name="validateOnBinding" value="true" />
+        <property name="displayViewConfigs">
+            <ref bean="ApplicationsViewConfigs"/>
+        </property>
+        <property name="serviceDisplayViewConfigs">
+            <ref bean="ServiceViewConfigs"/>
+        </property>
+        <property name="contentSystemConfigs">
+            <ref bean="ContentSystemConfigs"/>
+        </property>
+        <property name="contentStrategyConfigs">
+            <ref bean="ContentSystemStrategyConfigs"/>
+        </property>
+    </bean>
+</beans>

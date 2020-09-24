@@ -1,6 +1,433 @@
-<?xml version="1.0" ?>
-<portlet-class>org.springframework.web.portlet.DispatcherPortlet</portlet-class>
-<init-param>
-	<name>contextConfigLocation</name>
-	<value>/WEB-INF/spring-portlet.xml</value>
-</init-param>
+<?xml version="1.0" encoding="UTF-8"?>
+<portlet-app xmlns="http://java.sun.com/xml/ns/portlet/portlet-app_2_0.xsd"
+    version="2.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://java.sun.com/xml/ns/portlet/portlet-app_2_0.xsd http://java.sun.com/xml/ns/portlet/portlet-app_2_0.xsd">
+    <portlet>
+        <description>Community Applications Forum Portlet</description>
+        <portlet-name>CommunityApplicationsForumPortlet</portlet-name>
+        <display-name>Community Applications Forum Portlet</display-name>
+        <portlet-class>com.vignette.community.spring.web.portlet.DispatcherPortletVgn</portlet-class>
+		<init-param>
+			<name>contextConfigLocation</name>
+			<value>/WEB-INF/context/portlet/CommunityApplicationsForum.xml</value>
+		</init-param>
+        <supports>
+            <mime-type>*/*</mime-type>
+            <portlet-mode>view</portlet-mode>
+            <portlet-mode>config</portlet-mode>
+        </supports>
+        <portlet-info>
+            <title>Mode Name View</title>
+        </portlet-info>
+    </portlet>
+
+    <portlet>
+        <description>Community Applications Wall Portlet</description>
+        <portlet-name>CommunityApplicationsWallPortlet</portlet-name>
+        <display-name>Community Applications Wall Portlet</display-name>
+        <portlet-class>com.vignette.community.spring.web.portlet.DispatcherPortletVgn</portlet-class>
+        <init-param>
+            <name>contextConfigLocation</name>
+            <value>/WEB-INF/context/portlet/CommunityApplicationsWall.xml</value>
+        </init-param>
+        <supports>
+            <mime-type>*/*</mime-type>
+            <portlet-mode>view</portlet-mode>
+            <portlet-mode>config</portlet-mode>
+        </supports>
+        <portlet-info>
+            <title>Mode Name View</title>
+        </portlet-info>
+    </portlet>
+
+    <portlet>
+        <description>Community Applications Blog Portlet</description>
+        <portlet-name>CommunityApplicationsBlogPortlet</portlet-name>
+        <display-name>Community Applications Blog Portlet</display-name>
+        <portlet-class>com.vignette.community.spring.web.portlet.DispatcherPortletVgn</portlet-class>
+		<init-param>
+			<name>contextConfigLocation</name>
+			<value>/WEB-INF/context/portlet/CommunityApplicationsBlog.xml</value>
+		</init-param>
+        <supports>
+            <mime-type>*/*</mime-type>
+            <portlet-mode>view</portlet-mode>
+            <portlet-mode>config</portlet-mode>
+            <portlet-mode>edit_defaults</portlet-mode>
+        </supports>
+        <portlet-info>
+            <title>Mode Name View</title>
+        </portlet-info>
+    </portlet>
+
+    <portlet>
+        <description>Community Applications Wiki Portlet</description>
+        <portlet-name>CommunityApplicationsWikiPortlet</portlet-name>
+        <display-name>Community Applications Wiki Portlet</display-name>
+        <portlet-class>com.vignette.community.spring.web.portlet.DispatcherPortletVgn</portlet-class>
+		<init-param>
+			<name>contextConfigLocation</name>
+			<value>/WEB-INF/context/portlet/CommunityApplicationsWiki.xml</value>
+		</init-param>
+        <supports>
+            <mime-type>*/*</mime-type>
+            <portlet-mode>view</portlet-mode>
+            <portlet-mode>config</portlet-mode>
+        </supports>
+        <portlet-info>
+            <title>Mode Name View</title>
+        </portlet-info>
+    </portlet>
+
+    <portlet>
+        <description>Community Applications List Portlet</description>
+        <portlet-name>CommunityApplicationsListPortlet</portlet-name>
+        <display-name>Community Applications List Portlet</display-name>
+        <portlet-class>com.vignette.community.spring.web.portlet.DispatcherPortletVgn</portlet-class>
+		<init-param>
+			<name>contextConfigLocation</name>
+			<value>/WEB-INF/context/portlet/CommunityApplicationsList.xml</value>
+		</init-param>
+        <supports>
+            <mime-type>*/*</mime-type>
+            <portlet-mode>view</portlet-mode>
+            <portlet-mode>config</portlet-mode>
+        </supports>
+        <portlet-info>
+            <title>Mode Name View</title>
+        </portlet-info>
+    </portlet>
+
+  <!-- VCA CALENDAR -->
+    <portlet>
+        <description>Community Applications Calendar Portlet</description>
+        <portlet-name>CommunityApplicationsCalendarPortlet</portlet-name>
+        <display-name>Community Applications Calendar Portlet</display-name>
+        <portlet-class>com.vignette.community.spring.web.portlet.DispatcherPortletVgn</portlet-class>
+    <init-param>
+      <name>contextConfigLocation</name>
+      <value>/WEB-INF/context/portlet/CommunityApplicationsCalendar.xml</value>
+    </init-param>
+        <supports>
+            <mime-type>*/*</mime-type>
+            <portlet-mode>view</portlet-mode>
+            <portlet-mode>config</portlet-mode>
+        </supports>
+        <portlet-info>
+            <title>Mode Name View</title>
+        </portlet-info>
+    </portlet>
+
+    <portlet>
+        <description>Community Applications File Library Portlet</description>
+        <portlet-name>CommunityApplicationsFileLibraryPortlet</portlet-name>
+        <display-name>Community Applications File Library Portlet</display-name>
+        <portlet-class>com.vignette.community.spring.web.portlet.DispatcherPortletVgn</portlet-class>
+    <init-param>
+      <name>contextConfigLocation</name>
+      <value>/WEB-INF/context/portlet/CommunityApplicationsFileLibrary.xml</value>
+    </init-param>
+        <supports>
+            <mime-type>*/*</mime-type>
+            <portlet-mode>view</portlet-mode>
+            <portlet-mode>config</portlet-mode>
+        </supports>
+        <portlet-info>
+            <title>Mode Name View</title>
+        </portlet-info>
+    </portlet>
+
+    <portlet>
+        <description>Community Applications Presentation Library Portlet</description>
+        <portlet-name>CommunityApplicationsPresentationLibraryPortlet</portlet-name>
+        <display-name>Community Applications Presentation Library Portlet</display-name>
+        <portlet-class>com.vignette.community.spring.web.portlet.DispatcherPortletVgn</portlet-class>
+    <init-param>
+      <name>contextConfigLocation</name>
+      <value>/WEB-INF/context/portlet/CommunityApplicationsPresentationLibrary.xml</value>
+    </init-param>
+        <supports>
+            <mime-type>*/*</mime-type>
+            <portlet-mode>view</portlet-mode>
+            <portlet-mode>config</portlet-mode>
+        </supports>
+        <portlet-info>
+            <title>Mode Name View</title>
+        </portlet-info>
+    </portlet>
+
+    <portlet>
+        <description>Community Applications Idea Library Portlet</description>
+        <portlet-name>CommunityApplicationsIdeaLibraryPortlet</portlet-name>
+        <display-name>Community Applications Idea Library Portlet</display-name>
+        <portlet-class>com.vignette.community.spring.web.portlet.DispatcherPortletVgn</portlet-class>
+    <init-param>
+      <name>contextConfigLocation</name>
+      <value>/WEB-INF/context/portlet/CommunityApplicationsIdeaLibrary.xml</value>
+    </init-param>
+        <supports>
+            <mime-type>*/*</mime-type>
+            <portlet-mode>view</portlet-mode>
+            <portlet-mode>config</portlet-mode>
+        </supports>
+        <portlet-info>
+            <title>Mode Name View</title>
+        </portlet-info>
+    </portlet>
+
+  <!-- VCA PODCASTS -->
+    <portlet>
+        <description>Community Applications Podcast Library Portlet</description>
+        <portlet-name>CommunityApplicationsPodcastLibraryPortlet</portlet-name>
+        <display-name>Community Applications Podcast Library Portlet</display-name>
+        <portlet-class>com.vignette.community.spring.web.portlet.DispatcherPortletVgn</portlet-class>
+    <init-param>
+      <name>contextConfigLocation</name>
+      <value>/WEB-INF/context/portlet/CommunityApplicationsPodcastLibrary.xml</value>
+    </init-param>
+        <supports>
+            <mime-type>*/*</mime-type>
+            <portlet-mode>view</portlet-mode>
+            <portlet-mode>config</portlet-mode>
+        </supports>
+        <portlet-info>
+            <title>Mode Name View</title>
+        </portlet-info>
+    </portlet>
+
+  <!-- VCA PHOTOS -->
+    <portlet>
+        <description>Community Applications Photo Library Portlet</description>
+        <portlet-name>CommunityApplicationsPhotoLibraryPortlet</portlet-name>
+        <display-name>Community Applications Photo Library Portlet</display-name>
+        <portlet-class>com.vignette.community.spring.web.portlet.DispatcherPortletVgn</portlet-class>
+    <init-param>
+      <name>contextConfigLocation</name>
+      <value>/WEB-INF/context/portlet/CommunityApplicationsPhotoLibrary.xml</value>
+    </init-param>
+        <supports>
+            <mime-type>*/*</mime-type>
+            <portlet-mode>view</portlet-mode>
+            <portlet-mode>config</portlet-mode>
+        </supports>
+        <portlet-info>
+            <title>Mode Name View</title>
+        </portlet-info>
+    </portlet>
+
+  <!-- VCA BANNER -->
+    <portlet>
+        <description>Community Applications Banner Library Portlet</description>
+        <portlet-name>CommunityApplicationsBannerLibraryPortlet</portlet-name>
+        <display-name>Community Applications Banner Library Portlet</display-name>
+        <portlet-class>com.vignette.community.spring.web.portlet.DispatcherPortletVgn</portlet-class>
+    <init-param>
+      <name>contextConfigLocation</name>
+      <value>/WEB-INF/context/portlet/CommunityApplicationsBannerLibrary.xml</value>
+    </init-param>
+        <supports>
+            <mime-type>*/*</mime-type>
+            <portlet-mode>view</portlet-mode>
+            <portlet-mode>config</portlet-mode>
+        </supports>
+        <portlet-info>
+            <title>Mode Name View</title>
+        </portlet-info>
+    </portlet>
+    <portlet>
+        <description>Community Applications Video LibraryPortlet</description>
+        <portlet-name>CommunityApplicationsVideoLibraryPortlet</portlet-name>
+        <display-name>Community Applications Video Library Portlet</display-name>
+        <portlet-class>com.vignette.community.spring.web.portlet.DispatcherPortletVgn</portlet-class>
+    <init-param>
+      <name>contextConfigLocation</name>
+      <value>/WEB-INF/context/portlet/CommunityApplicationsVideoLibrary.xml</value>
+    </init-param>
+        <supports>
+            <mime-type>*/*</mime-type>
+            <portlet-mode>view</portlet-mode>
+            <portlet-mode>config</portlet-mode>
+        </supports>
+        <portlet-info>
+            <title>Mode Name View</title>
+        </portlet-info>
+    </portlet>
+
+    <portlet>
+        <description>Community Applications User Portlet</description>
+        <portlet-name>CommunityApplicationsUserPortlet</portlet-name>
+        <display-name>Community Applications User Portlet</display-name>
+        <portlet-class>com.vignette.community.spring.web.portlet.DispatcherPortletVgn</portlet-class>
+    <init-param>
+      <name>contextConfigLocation</name>
+      <value>/WEB-INF/context/portlet/CommunityApplicationsUser.xml</value>
+    </init-param>
+        <supports>
+            <mime-type>*/*</mime-type>
+            <portlet-mode>view</portlet-mode>
+            <portlet-mode>config</portlet-mode>
+        </supports>
+        <portlet-info>
+            <title>Mode Name View</title>
+        </portlet-info>
+    </portlet>
+
+    <portlet>
+      <description>Community Applications SocialGroup Portlet</description>
+      <portlet-name>CommunityApplicationsSocialGroupPortlet</portlet-name>
+      <display-name>Community Applications Social Group Portlet</display-name>
+      <portlet-class>com.vignette.community.spring.web.portlet.DispatcherPortletVgn</portlet-class>
+      <init-param>
+        <name>contextConfigLocation</name>
+        <value>/WEB-INF/context/portlet/CommunityApplicationsSocialGroup.xml</value>
+      </init-param>
+      <supports>
+          <mime-type>*/*</mime-type>
+          <portlet-mode>view</portlet-mode>
+          <portlet-mode>config</portlet-mode>
+      </supports>
+      <portlet-info>
+          <title>Mode Name View</title>
+      </portlet-info>
+    </portlet>
+
+    <portlet>
+      <description>Community Applications Search Portlet</description>
+      <portlet-name>CommunityApplicationsSearchPortlet</portlet-name>
+      <display-name>Community Applications Search Portlet</display-name>
+      <portlet-class>com.vignette.community.spring.web.portlet.DispatcherPortletVgn</portlet-class>
+      <init-param>
+        <name>contextConfigLocation</name>
+        <value>/WEB-INF/context/portlet/CommunityApplicationsSearch.xml</value>
+      </init-param>
+      <supports>
+          <mime-type>*/*</mime-type>
+          <portlet-mode>view</portlet-mode>
+          <portlet-mode>config</portlet-mode>
+      </supports>
+      <portlet-info>
+          <title>Search View</title>
+      </portlet-info>
+    </portlet>
+
+    <portlet>
+        <description>Community Applications Activity Feed Portlet</description>
+        <portlet-name>CommunityApplicationsActivityFeedPortlet</portlet-name>
+        <display-name>Community Applications Activity Feed Portlet</display-name>
+        <portlet-class>com.vignette.community.spring.web.portlet.DispatcherPortletVgn</portlet-class>
+    <init-param>
+      <name>contextConfigLocation</name>
+      <value>/WEB-INF/context/portlet/CommunityApplicationsActivityFeed.xml</value>
+    </init-param>
+        <supports>
+            <mime-type>*/*</mime-type>
+            <portlet-mode>view</portlet-mode>
+            <portlet-mode>config</portlet-mode>
+        </supports>
+        <portlet-info>
+            <title>Mode Name View</title>
+        </portlet-info>
+    </portlet>
+
+    <portlet>    
+        <description>Community Applications Featured Items Portlet</description>
+        <portlet-name>CommunityApplicationsFeaturedItemsPortlet</portlet-name>
+        <display-name>Community Applications Featured Items Portlet</display-name>
+        <portlet-class>com.vignette.community.spring.web.portlet.DispatcherPortletVgn</portlet-class>
+        <init-param>
+            <name>contextConfigLocation</name>
+            <value>/WEB-INF/context/portlet/CommunityApplicationsFeaturedItems.xml</value>
+        </init-param>
+        <supports>
+            <mime-type>*/*</mime-type>
+            <portlet-mode>view</portlet-mode>
+            <portlet-mode>config</portlet-mode>
+        </supports>
+        <portlet-info>
+            <title>Feature View</title>
+        </portlet-info>
+    </portlet>
+
+    <portlet>
+        <description>Adds User Generated Content services like comments, ratings and reviews,
+            tagging and usage analysis to your Portal pages or Dynamic Portal templates</description>
+        <portlet-name>CommunityFeedbackItemPortlet</portlet-name>
+        <display-name>Community Feedback Item Portlet</display-name>
+        <portlet-class>com.vignette.community.spring.web.portlet.DispatcherPortletVgn</portlet-class>
+		<init-param>
+			<name>contextConfigLocation</name>
+			<value>/WEB-INF/context/portlet/communityservicesitem.xml</value>
+		</init-param>
+        <supports>
+            <mime-type>*/*</mime-type>
+            <portlet-mode>view</portlet-mode>
+            <portlet-mode>config</portlet-mode>
+        </supports>
+        <portlet-info>
+            <title>Mode Name View</title>
+        </portlet-info>
+    </portlet>
+
+    <portlet>
+        <description>Queries User Generated Content for services like comments
+            (e.g. most commented), ratings and reviews (e.g. best rated),
+            tagging (e.g. tag cloud) and usage analysis (e.g. most viewed)</description>
+        <portlet-name>CommunityFeedbackListPortlet</portlet-name>
+        <display-name>Community Feedback List Portlet</display-name>
+        <portlet-class>com.vignette.community.spring.web.portlet.DispatcherPortletVgn</portlet-class>
+		<init-param>
+			<name>contextConfigLocation</name>
+			<value>/WEB-INF/context/portlet/communityserviceslist.xml</value>
+		</init-param>
+        <supports>
+            <mime-type>text/html</mime-type>
+            <portlet-mode>view</portlet-mode>
+            <portlet-mode>config</portlet-mode>
+        </supports>
+        <portlet-info>
+            <title>Mode Name View</title>
+        </portlet-info>
+    </portlet>
+    
+    
+    <portlet>
+        <description>Community Applications Collection Portlet</description>
+        <portlet-name>CommunityApplicationsCollectionPortlet</portlet-name>
+        <display-name>Community Applications Collection Portlet</display-name>
+        <portlet-class>com.vignette.community.spring.web.portlet.DispatcherPortletVgn</portlet-class>
+        <init-param>
+            <name>contextConfigLocation</name>
+            <value>/WEB-INF/context/portlet/CommunityApplicationsCollection.xml</value>
+        </init-param>
+        <supports>
+            <mime-type>*/*</mime-type>
+            <portlet-mode>view</portlet-mode>
+            <portlet-mode>config</portlet-mode>
+        </supports>
+        <portlet-info>
+            <title>Mode Name View</title>
+        </portlet-info>
+    </portlet>
+
+    <portlet>
+        <description>Community Applications Recent Visitors Portlet</description>
+        <portlet-name>CommunityApplicationsRecentVisitorsPortlet</portlet-name>
+        <display-name>Community Applications Recent Visitors Portlet</display-name>
+        <portlet-class>com.vignette.community.spring.web.portlet.DispatcherPortletVgn</portlet-class>
+        <init-param>
+            <name>contextConfigLocation</name>
+            <value>/WEB-INF/context/portlet/CommunityApplicationsRecentVisitors.xml</value>
+        </init-param>
+        <supports>
+            <mime-type>*/*</mime-type>
+            <portlet-mode>view</portlet-mode>
+            <portlet-mode>config</portlet-mode>
+        </supports>
+        <portlet-info>
+            <title>Recent Visitors View</title>
+        </portlet-info>
+    </portlet>
+    
+
+</portlet-app>
